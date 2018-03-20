@@ -1,0 +1,659 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.0">
+    
+    
+      
+        <title>Terraform on OpenStack - Yesq's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.78aab2dc.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#terraform-on-openstack" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Yesq's blog" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Yesq's blog
+              </span>
+              <span class="md-header-nav__topic">
+                Terraform on OpenStack
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Yesq's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Hello" class="md-nav__link">
+      Hello
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../How_to_build_a_blog/" title="How to build a blog" class="md-nav__link">
+      How to build a blog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../golangs_lock/" title="Golang's lock" class="md-nav__link">
+      Golang's lock
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../learn-k8s-in-seconds/" title="Learn k8s in seconds" class="md-nav__link">
+      Learn k8s in seconds
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Terraform on OpenStack
+      </label>
+    
+    <a href="./" title="Terraform on OpenStack" class="md-nav__link md-nav__link--active">
+      Terraform on OpenStack
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-directory" title="Terraform directory" class="md-nav__link">
+    Terraform directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-file" title="Terraform file" class="md-nav__link">
+    Terraform file
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#who-you-are" title="Who You Are" class="md-nav__link">
+    Who You Are
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-want" title="What You Want" class="md-nav__link">
+    What You Want
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-cmd" title="Terraform CMD" class="md-nav__link">
+    Terraform CMD
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-directory" title="Terraform directory" class="md-nav__link">
+    Terraform directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-file" title="Terraform file" class="md-nav__link">
+    Terraform file
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#who-you-are" title="Who You Are" class="md-nav__link">
+    Who You Are
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-you-want" title="What You Want" class="md-nav__link">
+    What You Want
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-cmd" title="Terraform CMD" class="md-nav__link">
+    Terraform CMD
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="terraform-on-openstack">Terraform on OpenStack</h1>
+<p>OpenStack could offer infrastructure for us. If we apply for a group of infrastructure, an agent talking to OpenStack is needed. That is <a href="https://www.terraform.io/"><code>Terraform</code></a>. It also could works with other IaaS.</p>
+<p>We gave Terraform a infrastructure blueprint in our mind, it will performs as you wish. Then change the blueprint, Terraform will do his best to complete blueprint base exist infrastructure.</p>
+<h2 id="terraform-directory">Terraform directory</h2>
+<p>This dirctory is a workspace. The blueprint file(<code>.tf</code>) and intermediate state file stored here. If you want maintain a group infrastructure for long time, you need save the whole directory. The absolute path of this directory is also changeless.</p>
+<h2 id="terraform-file">Terraform file</h2>
+<p>Terraform file(<code>.tf</code>) store the information of who you are and what you want.</p>
+<h3 id="who-you-are">Who You Are</h3>
+<p>Define <code>provider</code> to show who you are, just like below.</p>
+<pre><code class="shell"># with password
+provider &quot;openstack&quot; {
+  user_name   = &quot;user_name&quot;
+  password    = &quot;password&quot;
+  auth_url    = &quot;http://1.1.1.1:5000/v3&quot;
+  region      = &quot;RegionOne&quot;
+  domain_id   = &quot;default&quot;
+  tenant_id = &quot;aaaaaaaaaa&quot;
+}
+
+# with token
+provider &quot;openstack&quot; {
+  token       = &quot;aaaaaaa&quot;
+  auth_url    = &quot;http://1.1.1.1:5000/v3&quot;
+  region      = &quot;RegionOne&quot;
+}
+</code></pre>
+
+<p>Maybe we don't need option <code>domain_id</code> in different <code>OpenStack</code> environment. If there are errors we can not figure out, we could remove <code>region</code>, <code>domain_id</code> to have a try.</p>
+<p>More detail in <a href="https://www.terraform.io/docs/providers/openstack/">Documents</a></p>
+<h3 id="what-you-want">What You Want</h3>
+<p>Define a network, subnet, router, sec group.
+Create instances on this network.</p>
+<p>More detail on <a href="https://www.terraform.io/docs/providers/openstack/">Documents</a> and a <a href="https://www.matt-j.co.uk/2015/03/27/openstack-infrastructure-automation-with-terraform-part-2/">blog</a></p>
+<pre><code class="shell">#
+# Create a security group
+#
+
+resource &quot;openstack_compute_secgroup_v2&quot; &quot;tf_sec_1&quot; {
+    region = &quot;&quot;
+    name = &quot;sec-name&quot;
+    description = &quot;Security Group For &quot;
+    rule {
+        from_port = 22
+        to_port = 22
+        ip_protocol = &quot;tcp&quot;
+        cidr = &quot;0.0.0.0/0&quot;
+    }
+    rule {
+        from_port = -1
+        to_port = -1
+        ip_protocol = &quot;icmp&quot;
+        cidr = &quot;0.0.0.0/0&quot;
+    }
+    rule {
+        from_port = 1
+        to_port = 65535
+        ip_protocol = &quot;udp&quot;
+        self = true
+    }
+    rule {
+        from_port = 1
+        to_port = 65535
+        ip_protocol = &quot;tcp&quot;
+        self = true
+    }
+    rule {
+        from_port = 443
+        to_port = 443
+        ip_protocol = &quot;tcp&quot;
+        cidr = &quot;0.0.0.0/0&quot;
+    }
+}
+
+
+#
+# Create a Network
+#
+resource &quot;openstack_networking_network_v2&quot; &quot;tf_network&quot; {
+    region = &quot;&quot;
+    name = &quot;network-name&quot;
+    admin_state_up = &quot;true&quot;
+}
+
+resource &quot;openstack_networking_subnet_v2&quot; &quot;tf_net_sub1&quot; {
+    region = &quot;&quot;
+    name = &quot;subnet-name&quot;
+    network_id = &quot;${openstack_networking_network_v2.tf_network.id}&quot;
+    cidr = &quot;192.168.1.0/24&quot;
+    ip_version = 4
+    dns_nameservers = [&quot;114.114.114.114&quot;, &quot;8.8.8.8&quot;]
+}
+
+#
+# Create a router for our network
+#
+resource &quot;openstack_networking_router_v2&quot; &quot;tf_router1&quot; {
+    region = &quot;&quot;
+    name = &quot;router-name&quot;
+    admin_state_up = &quot;true&quot;
+    external_gateway = &quot;88787937-6924-4b36-b191-663e745a3666&quot;
+}
+
+#
+# Attach the Router to our Network via an Interface
+#
+resource &quot;openstack_networking_router_interface_v2&quot; &quot;tf_rtr_if_1&quot; {
+    region = &quot;&quot;
+    router_id = &quot;${openstack_networking_router_v2.tf_router1.id}&quot;
+    subnet_id = &quot;${openstack_networking_subnet_v2.tf_net_sub1.id}&quot;
+}
+
+#
+# Create some Openstack Floating IP's for our VM's
+#
+resource &quot;openstack_compute_floatingip_v2&quot; &quot;fip_1&quot; {
+    region = &quot;&quot;
+    pool = &quot;FloatingFrom&quot;
+}
+
+resource &quot;openstack_compute_floatingip_associate_v2&quot; &quot;fip_1&quot; {
+  floating_ip = &quot;${openstack_compute_floatingip_v2.fip_1.address}&quot;
+  instance_id = &quot;${openstack_compute_instance_v2.master_instance.0.id}&quot;
+}
+
+# variable &quot;cluster_network_uuid&quot; {
+  # default = &quot;${openstack_networking_network_v2.tf_network.id}&quot;
+# }
+
+
+resource &quot;openstack_compute_instance_v2&quot; &quot;master_instance&quot; {
+  count = 3
+  name  = &quot;${format(&quot;master-%02d&quot;, count.index)}&quot;
+  region    = &quot;&quot;
+  image_id  = &quot;vm-image-id&quot;
+  flavor_id = &quot;flavor-id&quot;
+  security_groups = [&quot;sec-name&quot;,&quot;default&quot;]
+  user_data = &quot;#!/bin/sh\n touch file&quot;
+  config_drive = &quot;true&quot;
+
+  network {
+    uuid = &quot;${openstack_networking_network_v2.tf_network.id}&quot;
+  }
+}
+
+resource &quot;openstack_compute_instance_v2&quot; &quot;node_instance&quot; {
+  count = 0
+  name = &quot;${format(&quot;node-%02d&quot;, count.index)}&quot;
+  region    = &quot;&quot;
+  image_id  = &quot;vm-image-id&quot;
+  flavor_id = &quot;flavor-id&quot;
+  security_groups = [&quot;sec-name&quot;,&quot;default&quot;]
+  user_data = &quot;#!/bin/sh\n touch file&quot;
+  config_drive = &quot;true&quot;
+
+  network {
+    uuid = &quot;${openstack_networking_network_v2.tf_network.id}&quot;
+  }
+}
+
+resource &quot;openstack_compute_instance_v2&quot; &quot;worker&quot; {
+  name      = &quot;worker&quot;
+  region    = &quot;&quot;
+  image_id  = &quot;vm-image-id&quot;
+  flavor_name = &quot;t2.4medium&quot;
+  security_groups = [&quot;sec-name&quot;,&quot;default&quot;]
+  user_data = &quot;#!/bin/sh\n touch file&quot;
+  config_drive = &quot;true&quot;
+
+  network {
+    uuid = &quot;88787937-6924-4b36-b191-663e745a3666&quot;
+    name = &quot;OutNetwork&quot;
+  }
+
+  network {
+    uuid = &quot;${openstack_networking_network_v2.tf_network.id}&quot;
+  }
+}
+
+
+output &quot;master_ips&quot; {
+  value = &quot;${openstack_compute_instance_v2.master_instance.*.network.0.fixed_ip_v4}&quot;
+}
+output &quot;master_ids&quot; {
+  value = &quot;${openstack_compute_instance_v2.master_instance.*.id}&quot;
+}
+output &quot;node_ips&quot; {
+  value = &quot;${openstack_compute_instance_v2.node_instance.*.network.0.fixed_ip_v4}&quot;
+}
+output &quot;node_ids&quot; {
+  value = &quot;${openstack_compute_instance_v2.node_instance.*.id}&quot;
+}
+output &quot;worker_ips_0&quot; {
+  value = &quot;${openstack_compute_instance_v2.worker.network.0.fixed_ip_v4}&quot;
+}
+output &quot;worker_ips_1&quot; {
+  value = &quot;${openstack_compute_instance_v2.worker.network.1.fixed_ip_v4}&quot;
+}
+output &quot;floating_ip&quot; {
+  value = &quot;${openstack_compute_floatingip_associate_v2.fip_1.floating_ip}&quot;
+}
+output &quot;instance_network&quot; {
+  value = &quot;${openstack_compute_instance_v2.master_instance.0.network.0.uuid}&quot;
+} 
+output &quot;subnet_id&quot; {
+  value = &quot;${openstack_networking_subnet_v2.tf_net_sub1.id}&quot;
+}
+output &quot;router_id&quot; {
+  value = &quot;${openstack_networking_router_v2.tf_router1.id}&quot;
+}
+output &quot;floating_ip_id&quot; {
+  value = &quot;${openstack_compute_floatingip_v2.fip_1.id}&quot;
+}
+output &quot;sec_id&quot; {
+  value = &quot;${openstack_compute_secgroup_v2.tf_sec_1.id}&quot;
+}
+</code></pre>
+
+<h2 id="terraform-cmd">Terraform CMD</h2>
+<p>After define <code>.tf</code> in workspace. You need setup provider plugin. Follow <a href="https://www.terraform.io/docs/plugins/provider.html">Document</a> or copy plugin to <code>/bin</code>.</p>
+<p>Run <code>terraform init</code>, <code>terraform plan</code> and <code>terraform apply</code>.</p>
+<p>You will see output final.</p>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../learn-k8s-in-seconds/" title="Learn k8s in seconds" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Learn k8s in seconds
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8eb9be28.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

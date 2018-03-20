@@ -1,0 +1,454 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.7.0">
+    
+    
+      
+        <title>How to build a blog - Yesq's blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.78aab2dc.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#how-to-build-a-blog" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Yesq's blog" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Yesq's blog
+              </span>
+              <span class="md-header-nav__topic">
+                How to build a blog
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Yesq's blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Hello" class="md-nav__link">
+      Hello
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        How to build a blog
+      </label>
+    
+    <a href="./" title="How to build a blog" class="md-nav__link md-nav__link--active">
+      How to build a blog
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#write-in-markdown" title="Write in Markdown" class="md-nav__link">
+    Write in Markdown
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-by-mkdocs" title="Build by Mkdocs" class="md-nav__link">
+    Build by Mkdocs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push-to-github-pages" title="Push to Github pages" class="md-nav__link">
+    Push to Github pages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" title="Workflow" class="md-nav__link">
+    Workflow
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../golangs_lock/" title="Golangs lock" class="md-nav__link">
+      Golangs lock
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../learn-k8s-in-seconds/" title="Learn k8s in seconds" class="md-nav__link">
+      Learn k8s in seconds
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../terraform_on_openstack/" title="Terraform on openstack" class="md-nav__link">
+      Terraform on openstack
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#write-in-markdown" title="Write in Markdown" class="md-nav__link">
+    Write in Markdown
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-by-mkdocs" title="Build by Mkdocs" class="md-nav__link">
+    Build by Mkdocs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push-to-github-pages" title="Push to Github pages" class="md-nav__link">
+    Push to Github pages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" title="Workflow" class="md-nav__link">
+    Workflow
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-build-a-blog">How to build a blog</h1>
+<p>This page will introduce the way I build this blog.</p>
+<p>In my first plan, <code>Travis CI</code> will work as builder and publisher. But I didn't found a right way for saving ssh key in CI pipeline.</p>
+<p>Now, <code>build</code> will run local in <code>Docker</code>. <code>publish</code> is also run in local.</p>
+<p>So, write in <code>Markdown</code>. Build to <code>HTML</code> by <code>Mkdocs</code>. Push to <code>Github Pages</code>.</p>
+<h2 id="write-in-markdown">Write in Markdown</h2>
+<p>Write your blog in <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet"><code>Markdown</code></a> formate. Save them in <code>./docs/</code>. Subfolder is ok. <code>404</code> page will show at first, if <code>./docs/index.md</code> absent.</p>
+<h2 id="build-by-mkdocs">Build by <code>Mkdocs</code></h2>
+<p><a href="http://www.mkdocs.org/"><code>Mkdocs</code></a> could build Markdown to Html. Running in Docker is the simplest way.</p>
+<pre><code class="shell">docker run --rm -it -v `pwd`:/docs squidfunk/mkdocs-material build
+</code></pre>
+
+<p>Script above will create static HTML file in <code>./site/</code>. All you need is a file server.</p>
+<h2 id="push-to-github-pages">Push to <code>Github pages</code></h2>
+<p>Github could choose a repository as a file server. Follow site <a href="https://pages.github.com/"><code>Github pages</code></a> to create one.</p>
+<p>We will push content of <code>./site/</code> to your <code>Github pages</code> later.</p>
+<p>At first time, we need link <code>./site/</code> to <code>Github pages</code>.</p>
+<pre><code class="shell">$ cd ./site
+$ git init
+$ git remote add origin $YOUR_GITHUB_PAGES_REPOSITORY
+$ git add . &amp;&amp; git commit -m &quot;init and force update blog&quot; &amp;&amp; git push --force --set-upstream origin master
+</code></pre>
+
+<p>From now on, use <code>git add . &amp;&amp; git commit -m "update blog" &amp;&amp; git push</code> to update blog everytime after build.</p>
+<h2 id="workflow">Workflow</h2>
+<p>All workspace <code>./</code> will hosted in a independent repo on Github. Commit Markdown file in this repo.
+All static HTML file (<code>./site/</code>) hostd in <code>Github pages</code> repo. Commit them to update blog.</p>
+<p>Thanks for your attention.</p>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="Hello" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Hello
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../golangs_lock/" title="Golangs lock" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Golangs lock
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8eb9be28.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
