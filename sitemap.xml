@@ -59,6 +59,14 @@
 
     
     <url>
+     <loc>/trans_http_request/</loc>
+     <lastmod>2018-03-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/trans_io_reader/</loc>
      <lastmod>2018-03-20</lastmod>
      <changefreq>daily</changefreq>
