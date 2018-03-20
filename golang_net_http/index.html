@@ -376,7 +376,35 @@ resp, err := http.PostForm(&quot;http://example.com/form&quot;, url.Values{&quot
     log.Println(string(bs))
 </code></pre>
 
+<p>可以在定义 Client 的时候，自定义一些参数。比如超时时间，下层设置。</p>
+<p>或者用 <code>http.NewRequest</code> 返回一个 request 。
+该 request 在被 <code>client.Do(req)</code> 之前，可以自定义一些东西。</p>
 <h2 id="server">server</h2>
+<p>ListenAndServe 指定地址和 handler 之后，可以起一个服务器。
+handler nil 指使用 DefaultServeMux 。
+Handle, HandleFunc 可以向 DefaultServeMux 添加 handlers 。</p>
+<pre><code class="golang">    http.Handle(&quot;/foo&quot;, fooHandler)
+
+    http.HandleFunc(&quot;/bar&quot;, func(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, &quot;Hello, %q&quot;, html.EscapeString(r.URL.Path))
+    })
+
+    log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
+</code></pre>
+
+<p>自定义 server</p>
+<pre><code class="golang">s := &amp;http.Server{
+    Addr:           &quot;:8080&quot;,
+    Handler:        myHandler,
+    ReadTimeout:    10 * time.Second,
+    WriteTimeout:   10 * time.Second,
+    MaxHeaderBytes: 1 &lt;&lt; 20,
+}
+log.Fatal(s.ListenAndServe())
+</code></pre>
+
+<p>TODO: 更复杂的用法。
+TODO: 跟框架相比。</p>
                 
                   
                 
