@@ -36,7 +36,7 @@
     
     
       
-        <title>Learn k8s in seconds - Yesq's blog</title>
+        <title>Golang `net/http` - Yesq's blog</title>
       
     
     
@@ -70,7 +70,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#learn-k8s-in-seconds" tabindex="1" class="md-skip">
+      <a href="#golang-nethttp" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -96,7 +96,7 @@
                 Yesq's blog
               </span>
               <span class="md-header-nav__topic">
-                Learn k8s in seconds
+                Golang `net/http`
               </span>
             
           
@@ -189,30 +189,6 @@
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../golang_net_http/" title="Golang `net/http`" class="md-nav__link">
-      Golang `net/http`
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../golangs_lock/" title="Golang's lock" class="md-nav__link">
-      Golang's lock
-    </a>
-  </li>
-
-    
-      
-      
-      
-
   
 
 
@@ -224,11 +200,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Learn k8s in seconds
+        Golang `net/http`
       </label>
     
-    <a href="./" title="Learn k8s in seconds" class="md-nav__link md-nav__link--active">
-      Learn k8s in seconds
+    <a href="./" title="Golang `net/http`" class="md-nav__link md-nav__link--active">
+      Golang `net/http`
     </a>
     
       
@@ -242,35 +218,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conception" title="Conception" class="md-nav__link">
-    Conception
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pod" title="Pod" class="md-nav__link">
-    Pod
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podyml" title="pod.yml" class="md-nav__link">
-    pod.yml
+  <a href="#client" title="client" class="md-nav__link">
+    client
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#server" title="server" class="md-nav__link">
+    server
+  </a>
   
 </li>
       
@@ -282,6 +239,30 @@
   
 </nav>
     
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../golangs_lock/" title="Golangs lock" class="md-nav__link">
+      Golangs lock
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../learn-k8s-in-seconds/" title="Learn k8s in seconds" class="md-nav__link">
+      Learn k8s in seconds
+    </a>
   </li>
 
     
@@ -342,35 +323,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conception" title="Conception" class="md-nav__link">
-    Conception
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pod" title="Pod" class="md-nav__link">
-    Pod
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podyml" title="pod.yml" class="md-nav__link">
-    pod.yml
+  <a href="#client" title="client" class="md-nav__link">
+    client
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#server" title="server" class="md-nav__link">
+    server
+  </a>
   
 </li>
       
@@ -391,60 +353,30 @@
               
                 
                 
-                <h1 id="learn-k8s-in-seconds">Learn k8s in seconds</h1>
-<h2 id="conception">Conception</h2>
-<p><a href="https://kubernetes.io/docs/concepts/">Documents</a></p>
-<ul>
-<li>Pod: The basic unit, consist of one or more container. These containers share network and drive.</li>
-<li>Deployment: A pod status to keep. </li>
-</ul>
-<h3 id="pod">Pod</h3>
-<p>The smallest and simplest unit in k8s. Pod could include one or more container, they share a <code>ClusterIP</code>.</p>
-<p>Usually use controller(e.g., Deployments) manage Pod. But now we learn how to use Pod only.</p>
-<h4 id="podyml">pod.yml</h4>
-<pre><code class="yml">apiVersion: v1
-kind: Pod
-metadata:
-  name: myapp-pod
-  labels:
-    app: myapp
-spec:
-  containers:
-  - name: myapp-container
-    image: busybox
-    command: ['sh', '-c', 'echo Hello Kubernetes! &amp;&amp; sleep 3600']
+                <h1 id="golang-nethttp">Golang <code>net/http</code></h1>
+<p>整理一下 <code>net/http</code> 的简单用法。</p>
+<h2 id="client">client</h2>
+<pre><code class="golang">    resp, _ := http.Get(&quot;http://example.com/&quot;)
+    defer resp.Body.Close()
+    bs, _ := ioutil.ReadAll(resp.Body)
+    log.Println(string(bs))
 </code></pre>
 
-<p><code>apiVersion: v1</code> declaration we use which version api.</p>
-<p><code>kind: Pod</code> declaration the type of object.</p>
-<p><code>metadata:</code> set <code>name</code> and <code>labels</code>.</p>
-<p><code>spec:</code> define the specific of object. If type is Pod, <code>spec</code> should include a <code>containers</code> to define specific of container.</p>
-<p>Two <code>name</code> of <code>containers</code> and <code>metadata</code> is different. Metadata's name is unique name of pod in kubernetes. Containers' name will be a part of docker container's name.</p>
-<p>Now use <code>kubectl</code> communicate with kubernetes.</p>
-<p><code>kubectl get pods</code> list all pods.</p>
-<pre><code class="shell">$ kubectl get pods
-NAME        READY     STATUS    RESTARTS   AGE
-myapp-pod   1/1       Running   0          1m
-# `kubectl get pods myapp-pod` could filte one pod by Pod name
+<pre><code class="golang">resp, err := http.Post(&quot;http://example.com/upload&quot;, &quot;image/jpeg&quot;, &amp;buf)
+
+resp, err := http.PostForm(&quot;http://example.com/form&quot;, url.Values{&quot;key&quot;: {&quot;Value&quot;}, &quot;id&quot;: {&quot;123&quot;}})
 </code></pre>
 
-<p><code>kubectl logs myapp-pod</code> will show logs of the pod.</p>
-<pre><code class="shell">$ kubectl logs myapp-pod
-Hello Kubernetes!
+<p>如果想更详细的控制请求，需要生成一个 Client 对象。</p>
+<p>上边的用法实际上是用了默认的 <code>var DefaultClient = &amp;Client{}</code></p>
+<pre><code class="golang">    client := &amp;http.Client{}
+    resp, _ := client.Get(&quot;http://example.com&quot;)
+    defer resp.Body.Close()
+    bs, _ := ioutil.ReadAll(resp.Body)
+    log.Println(string(bs))
 </code></pre>
 
-<p><code>kubectl exec ...</code> exec some thing.</p>
-<pre><code class="shell">$ kubectl exec -it myapp-pod /bin/sh
-/ # ls
-bin   dev   etc   home  proc  root  sys   tmp   usr   var
-/ # exit
-$ kubectl exec -it myapp-pod pwd
-/
-$ kubectl exec -t myapp-pod pwd
-/
-</code></pre>
-
-<p>Network will notes in <code>Service</code> section.</p>
+<h2 id="server">server</h2>
                 
                   
                 
@@ -463,7 +395,7 @@ $ kubectl exec -t myapp-pod pwd
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../golangs_lock/" title="Golang's lock" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../How_to_build_a_blog/" title="How to build a blog" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -472,19 +404,19 @@ $ kubectl exec -t myapp-pod pwd
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Golang's lock
+                How to build a blog
               </span>
             </div>
           </a>
         
         
-          <a href="../terraform_on_openstack/" title="Terraform on openstack" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../golangs_lock/" title="Golangs lock" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Terraform on openstack
+                Golangs lock
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

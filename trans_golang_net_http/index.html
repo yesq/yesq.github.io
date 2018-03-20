@@ -36,7 +36,7 @@
     
     
       
-        <title>Learn k8s in seconds - Yesq's blog</title>
+        <title>Don’t use Go’s default HTTP client (in production) - Yesq's blog</title>
       
     
     
@@ -70,7 +70,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#learn-k8s-in-seconds" tabindex="1" class="md-skip">
+      <a href="#dont-use-gos-default-http-client-in-production" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -96,7 +96,7 @@
                 Yesq's blog
               </span>
               <span class="md-header-nav__topic">
-                Learn k8s in seconds
+                Don’t use Go’s default HTTP client (in production)
               </span>
             
           
@@ -213,6 +213,30 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../learn-k8s-in-seconds/" title="Learn k8s in seconds" class="md-nav__link">
+      Learn k8s in seconds
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../terraform_on_openstack/" title="Terraform on OpenStack" class="md-nav__link">
+      Terraform on OpenStack
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -223,89 +247,10 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Learn k8s in seconds
-      </label>
-    
-    <a href="./" title="Learn k8s in seconds" class="md-nav__link md-nav__link--active">
-      Learn k8s in seconds
+    <a href="./" title="Don’t use Go’s default HTTP client (in production)" class="md-nav__link md-nav__link--active">
+      Don’t use Go’s default HTTP client (in production)
     </a>
     
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conception" title="Conception" class="md-nav__link">
-    Conception
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pod" title="Pod" class="md-nav__link">
-    Pod
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podyml" title="pod.yml" class="md-nav__link">
-    pod.yml
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../terraform_on_openstack/" title="Terraform on openstack" class="md-nav__link">
-      Terraform on openstack
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../trans_golang_net_http/" title="Trans golang net http" class="md-nav__link">
-      Trans golang net http
-    </a>
   </li>
 
     
@@ -338,48 +283,6 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conception" title="Conception" class="md-nav__link">
-    Conception
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pod" title="Pod" class="md-nav__link">
-    Pod
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podyml" title="pod.yml" class="md-nav__link">
-    pod.yml
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -391,60 +294,40 @@
               
                 
                 
-                <h1 id="learn-k8s-in-seconds">Learn k8s in seconds</h1>
-<h2 id="conception">Conception</h2>
-<p><a href="https://kubernetes.io/docs/concepts/">Documents</a></p>
-<ul>
-<li>Pod: The basic unit, consist of one or more container. These containers share network and drive.</li>
-<li>Deployment: A pod status to keep. </li>
-</ul>
-<h3 id="pod">Pod</h3>
-<p>The smallest and simplest unit in k8s. Pod could include one or more container, they share a <code>ClusterIP</code>.</p>
-<p>Usually use controller(e.g., Deployments) manage Pod. But now we learn how to use Pod only.</p>
-<h4 id="podyml">pod.yml</h4>
-<pre><code class="yml">apiVersion: v1
-kind: Pod
-metadata:
-  name: myapp-pod
-  labels:
-    app: myapp
-spec:
-  containers:
-  - name: myapp-container
-    image: busybox
-    command: ['sh', '-c', 'echo Hello Kubernetes! &amp;&amp; sleep 3600']
+                <h1 id="dont-use-gos-default-http-client-in-production">Don’t use Go’s default HTTP client (in production)</h1>
+<p>翻译/笔记 <a href="https://medium.com/@nate510/don-t-use-go-s-default-http-client-4804cb19f779">https://medium.com/@nate510/don-t-use-go-s-default-http-client-4804cb19f779</a></p>
+<p>只用简单的 <code>http.Get</code> 就可以发送请求得到相应。但是并没有设置超时时间。当服务端挂起你的请求，你的程序将可能出现问题。</p>
+<p>证明</p>
+<pre><code class="golang">  svr := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    time.Sleep(time.Hour)
+  }))
+  defer svr.Close()
+  fmt.Println(“making request”)
+  http.Get(svr.URL)
+  fmt.Println(“finished request”)
 </code></pre>
 
-<p><code>apiVersion: v1</code> declaration we use which version api.</p>
-<p><code>kind: Pod</code> declaration the type of object.</p>
-<p><code>metadata:</code> set <code>name</code> and <code>labels</code>.</p>
-<p><code>spec:</code> define the specific of object. If type is Pod, <code>spec</code> should include a <code>containers</code> to define specific of container.</p>
-<p>Two <code>name</code> of <code>containers</code> and <code>metadata</code> is different. Metadata's name is unique name of pod in kubernetes. Containers' name will be a part of docker container's name.</p>
-<p>Now use <code>kubectl</code> communicate with kubernetes.</p>
-<p><code>kubectl get pods</code> list all pods.</p>
-<pre><code class="shell">$ kubectl get pods
-NAME        READY     STATUS    RESTARTS   AGE
-myapp-pod   1/1       Running   0          1m
-# `kubectl get pods myapp-pod` could filte one pod by Pod name
+<p>服务端响应之前等待 1 小时。用默认 Client 发送的请求会一直等下去。</p>
+<p>简单的解决方案。</p>
+<pre><code class="golang">    var netClient = &amp;http.Client{
+        Timeout: time.Second * 10,
+    }
 </code></pre>
 
-<p><code>kubectl logs myapp-pod</code> will show logs of the pod.</p>
-<pre><code class="shell">$ kubectl logs myapp-pod
-Hello Kubernetes!
+<p>如果想更细粒度的控制整个请求生命周期。
+可以自定义 <code>net.Transport</code>, <code>net.Dialer</code>。</p>
+<pre><code class="golang">    var netTransport = &amp;http.Transport{
+    Dial: (&amp;net.Dialer{
+        Timeout: 5 * time.Second,
+    }).Dial,
+    TLSHandshakeTimeout: 5 * time.Second,
+    }
+    var netClient = &amp;http.Client{
+    Timeout: time.Second * 10,
+    Transport: netTransport,
+    }
+    response, _ := netClient.Get(url)
 </code></pre>
-
-<p><code>kubectl exec ...</code> exec some thing.</p>
-<pre><code class="shell">$ kubectl exec -it myapp-pod /bin/sh
-/ # ls
-bin   dev   etc   home  proc  root  sys   tmp   usr   var
-/ # exit
-$ kubectl exec -it myapp-pod pwd
-/
-$ kubectl exec -t myapp-pod pwd
-/
-</code></pre>
-
-<p>Network will notes in <code>Service</code> section.</p>
                 
                   
                 
@@ -463,7 +346,7 @@ $ kubectl exec -t myapp-pod pwd
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../golangs_lock/" title="Golang's lock" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../terraform_on_openstack/" title="Terraform on OpenStack" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -472,19 +355,19 @@ $ kubectl exec -t myapp-pod pwd
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Golang's lock
+                Terraform on OpenStack
               </span>
             </div>
           </a>
         
         
-          <a href="../terraform_on_openstack/" title="Terraform on openstack" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../trans_io_reader/" title="Trans io reader" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Terraform on openstack
+                Trans io reader
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

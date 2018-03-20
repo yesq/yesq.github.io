@@ -41,6 +41,26 @@
             "title": "Workflow"
         }, 
         {
+            "location": "/golang_net_http/", 
+            "text": "Golang \nnet/http\n\n\n\u6574\u7406\u4e00\u4e0b \nnet/http\n \u7684\u7b80\u5355\u7528\u6cd5\u3002\n\n\nclient\n\n\n    resp, _ := http.Get(\nhttp://example.com/\n)\n    defer resp.Body.Close()\n    bs, _ := ioutil.ReadAll(resp.Body)\n    log.Println(string(bs))\n\n\n\n\nresp, err := http.Post(\nhttp://example.com/upload\n, \nimage/jpeg\n, \nbuf)\n\nresp, err := http.PostForm(\nhttp://example.com/form\n, url.Values{\nkey\n: {\nValue\n}, \nid\n: {\n123\n}})\n\n\n\n\n\u5982\u679c\u60f3\u66f4\u8be6\u7ec6\u7684\u63a7\u5236\u8bf7\u6c42\uff0c\u9700\u8981\u751f\u6210\u4e00\u4e2a Client \u5bf9\u8c61\u3002\n\n\n\u4e0a\u8fb9\u7684\u7528\u6cd5\u5b9e\u9645\u4e0a\u662f\u7528\u4e86\u9ed8\u8ba4\u7684 \nvar DefaultClient = \nClient{}\n\n\n    client := \nhttp.Client{}\n    resp, _ := client.Get(\nhttp://example.com\n)\n    defer resp.Body.Close()\n    bs, _ := ioutil.ReadAll(resp.Body)\n    log.Println(string(bs))\n\n\n\n\nserver", 
+            "title": "Golang `net/http`"
+        }, 
+        {
+            "location": "/golang_net_http/#golang-nethttp", 
+            "text": "\u6574\u7406\u4e00\u4e0b  net/http  \u7684\u7b80\u5355\u7528\u6cd5\u3002", 
+            "title": "Golang net/http"
+        }, 
+        {
+            "location": "/golang_net_http/#client", 
+            "text": "resp, _ := http.Get( http://example.com/ )\n    defer resp.Body.Close()\n    bs, _ := ioutil.ReadAll(resp.Body)\n    log.Println(string(bs))  resp, err := http.Post( http://example.com/upload ,  image/jpeg ,  buf)\n\nresp, err := http.PostForm( http://example.com/form , url.Values{ key : { Value },  id : { 123 }})  \u5982\u679c\u60f3\u66f4\u8be6\u7ec6\u7684\u63a7\u5236\u8bf7\u6c42\uff0c\u9700\u8981\u751f\u6210\u4e00\u4e2a Client \u5bf9\u8c61\u3002  \u4e0a\u8fb9\u7684\u7528\u6cd5\u5b9e\u9645\u4e0a\u662f\u7528\u4e86\u9ed8\u8ba4\u7684  var DefaultClient =  Client{}      client :=  http.Client{}\n    resp, _ := client.Get( http://example.com )\n    defer resp.Body.Close()\n    bs, _ := ioutil.ReadAll(resp.Body)\n    log.Println(string(bs))", 
+            "title": "client"
+        }, 
+        {
+            "location": "/golang_net_http/#server", 
+            "text": "", 
+            "title": "server"
+        }, 
+        {
             "location": "/golangs_lock/", 
             "text": "Golang's lock\n\n\nLearn usage of \nsync.Mutex\n from \nA Tour of Go\n.\n\n\npackage main\n\nimport (\n    \nfmt\n\n    \nsync\n\n    \ntime\n\n)\n\n// SafeCounter is safe to use concurrently.\ntype SafeCounter struct {\n    v   map[string]int\n    mux sync.Mutex\n}\n\n// Inc increments the counter for the given key.\nfunc (c *SafeCounter) Inc(key string) {\n    c.mux.Lock()\n    // Lock so only one goroutine at a time can access the map c.v.\n    c.v[key]++\n    c.mux.Unlock()\n}\n\n// Value returns the current value of the counter for the given key.\nfunc (c *SafeCounter) Value(key string) int {\n    c.mux.Lock()\n    // Lock so only one goroutine at a time can access the map c.v.\n    defer c.mux.Unlock()\n    return c.v[key]\n}\n\nfunc main() {\n    c := SafeCounter{v: make(map[string]int)}\n    for i := 0; i \n 1000; i++ {\n        go c.Inc(\nsomekey\n)\n    }\n\n    time.Sleep(time.Second)\n    fmt.Println(c.Value(\nsomekey\n))\n}\n\n\n\n\nRun script above, we will get a number, \n1000\n. All is well.\n\n\nIf we comment \nc.mux.Lock()\n and \nc.mux.Unlock()\n(there are 4 lines above), we will get error \nfatal error: concurrent map writes\n.\n\n\nIf the exist struct don't have element \nsync.Mutex\n, could I put \nsync.Mutex\n in a global varite.\n\n\npackage main\n\nimport (\n    \nfmt\n\n    \nsync\n\n    \ntime\n\n)\n\ntype SafeCounter struct {\n    v map[string]int\n}\n\nvar lock sync.Mutex\n\nfunc (c *SafeCounter) Inc(key string) {\n    lock.Lock()\n    defer lock.Unlock()\n    c.v[key]++\n}\n\nfunc (c *SafeCounter) Value(key string) int {\n    lock.Lock()\n    defer lock.Unlock()\n    return c.v[key]\n}\n\nfunc main() {\n    c := SafeCounter{v: make(map[string]int)}\n    for i := 0; i \n 1000; i++ {\n        go c.Inc(\nsomekey\n)\n    }\n\n    time.Sleep(time.Second)\n    fmt.Println(c.Value(\nsomekey\n))\n}\n\n\n\n\nEverything is fine.", 
             "title": "Golang's lock"
@@ -109,6 +129,16 @@
             "location": "/terraform_on_openstack/#terraform-cmd", 
             "text": "After define  .tf  in workspace. You need setup provider plugin. Follow  Document  or copy plugin to  /bin .  Run  terraform init ,  terraform plan  and  terraform apply .  You will see output final.", 
             "title": "Terraform CMD"
+        }, 
+        {
+            "location": "/trans_golang_net_http/", 
+            "text": "Don\u2019t use Go\u2019s default HTTP client (in production)\n\n\n\u7ffb\u8bd1/\u7b14\u8bb0 \nhttps://medium.com/@nate510/don-t-use-go-s-default-http-client-4804cb19f779\n\n\n\u53ea\u7528\u7b80\u5355\u7684 \nhttp.Get\n \u5c31\u53ef\u4ee5\u53d1\u9001\u8bf7\u6c42\u5f97\u5230\u76f8\u5e94\u3002\u4f46\u662f\u5e76\u6ca1\u6709\u8bbe\u7f6e\u8d85\u65f6\u65f6\u95f4\u3002\u5f53\u670d\u52a1\u7aef\u6302\u8d77\u4f60\u7684\u8bf7\u6c42\uff0c\u4f60\u7684\b\u7a0b\u5e8f\u5c06\u53ef\u80fd\u51fa\u73b0\u95ee\u9898\u3002\n\n\n\u8bc1\u660e\n\n\n  svr := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n    time.Sleep(time.Hour)\n  }))\n  defer svr.Close()\n  fmt.Println(\u201cmaking request\u201d)\n  http.Get(svr.URL)\n  fmt.Println(\u201cfinished request\u201d)\n\n\n\n\n\u670d\u52a1\u7aef\u54cd\u5e94\u4e4b\u524d\u7b49\u5f85 1 \u5c0f\u65f6\u3002\b\u7528\u9ed8\u8ba4 Client \u53d1\u9001\u7684\u8bf7\u6c42\u4f1a\u4e00\u76f4\u7b49\u4e0b\u53bb\u3002\n\n\n\u7b80\u5355\u7684\u89e3\u51b3\u65b9\u6848\u3002\n\n\n    var netClient = \nhttp.Client{\n        Timeout: time.Second * 10,\n    }\n\n\n\n\n\u5982\u679c\u60f3\u66f4\u7ec6\u7c92\u5ea6\u7684\u63a7\u5236\u6574\u4e2a\u8bf7\u6c42\u751f\u547d\u5468\u671f\u3002\n\u53ef\u4ee5\u81ea\u5b9a\u4e49 \nnet.Transport\n, \nnet.Dialer\n\u3002\n\n\n    var netTransport = \nhttp.Transport{\n    Dial: (\nnet.Dialer{\n        Timeout: 5 * time.Second,\n    }).Dial,\n    TLSHandshakeTimeout: 5 * time.Second,\n    }\n    var netClient = \nhttp.Client{\n    Timeout: time.Second * 10,\n    Transport: netTransport,\n    }\n    response, _ := netClient.Get(url)", 
+            "title": "Don\u2019t use Go\u2019s default HTTP client (in production)"
+        }, 
+        {
+            "location": "/trans_golang_net_http/#dont-use-gos-default-http-client-in-production", 
+            "text": "\u7ffb\u8bd1/\u7b14\u8bb0  https://medium.com/@nate510/don-t-use-go-s-default-http-client-4804cb19f779  \u53ea\u7528\u7b80\u5355\u7684  http.Get  \u5c31\u53ef\u4ee5\u53d1\u9001\u8bf7\u6c42\u5f97\u5230\u76f8\u5e94\u3002\u4f46\u662f\u5e76\u6ca1\u6709\u8bbe\u7f6e\u8d85\u65f6\u65f6\u95f4\u3002\u5f53\u670d\u52a1\u7aef\u6302\u8d77\u4f60\u7684\u8bf7\u6c42\uff0c\u4f60\u7684\b\u7a0b\u5e8f\u5c06\u53ef\u80fd\u51fa\u73b0\u95ee\u9898\u3002  \u8bc1\u660e    svr := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n    time.Sleep(time.Hour)\n  }))\n  defer svr.Close()\n  fmt.Println(\u201cmaking request\u201d)\n  http.Get(svr.URL)\n  fmt.Println(\u201cfinished request\u201d)  \u670d\u52a1\u7aef\u54cd\u5e94\u4e4b\u524d\u7b49\u5f85 1 \u5c0f\u65f6\u3002\b\u7528\u9ed8\u8ba4 Client \u53d1\u9001\u7684\u8bf7\u6c42\u4f1a\u4e00\u76f4\u7b49\u4e0b\u53bb\u3002  \u7b80\u5355\u7684\u89e3\u51b3\u65b9\u6848\u3002      var netClient =  http.Client{\n        Timeout: time.Second * 10,\n    }  \u5982\u679c\u60f3\u66f4\u7ec6\u7c92\u5ea6\u7684\u63a7\u5236\u6574\u4e2a\u8bf7\u6c42\u751f\u547d\u5468\u671f\u3002\n\u53ef\u4ee5\u81ea\u5b9a\u4e49  net.Transport ,  net.Dialer \u3002      var netTransport =  http.Transport{\n    Dial: ( net.Dialer{\n        Timeout: 5 * time.Second,\n    }).Dial,\n    TLSHandshakeTimeout: 5 * time.Second,\n    }\n    var netClient =  http.Client{\n    Timeout: time.Second * 10,\n    Transport: netTransport,\n    }\n    response, _ := netClient.Get(url)", 
+            "title": "Don\u2019t use Go\u2019s default HTTP client (in production)"
         }, 
         {
             "location": "/trans_io_reader/", 
